@@ -41,14 +41,14 @@ export default function PropertyTable(props) {
                             return (<tr>
                                 <th className="text-start">{attribute.label}</th>
                                 {
-                                    props.propertyData.map(property => {
+                                    props.propertyData.map((property, i) => {
                                         const attributeValue = property[key] || "-";
                                         let displayValue = attributeValue;
                                         const cellClass = attribute?.cellClass || "std-cell";
                                         if (attribute.displayType && attribute.displayType === "currency" ) {
                                             displayValue = attributeValue.toLocaleString("en-US", {style:"currency", currency:"USD"});
                                         }
-                                        return <td className={cellClass}>{displayValue}</td>
+                                        return <td className={cellClass} key={i}>{displayValue}</td>
                                     })
                                 }
                             </tr>);

@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 
 export default function PropertyCard(props) {
     // console.log('props', props);
-    const iframeSrc = "https://keenforms.com/keenforms/b7740ab6-17e8-4929-bfbb-0f4396a35249" + `?index=${props.propertyNumber}`;
+    const paramsStr = `index=${props.propertyNumber}&displayMode=iframe`;
+    const iframeSrc = "https://keenforms.com/keenforms/b7740ab6-17e8-4929-bfbb-0f4396a35249?" + paramsStr;
     return (
         <div className="card mb-4 rounded-3 shadow-sm">
             <div className="card-header py-3">
