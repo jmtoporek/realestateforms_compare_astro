@@ -113,7 +113,7 @@ export default function PropertyComparisonTool() {
                 </div>
             </div>
 
-            <div id="property-keenform-iframess-container">
+            <div id="property-keenform-iframes-container">
                 {
                     propertyArray.map((propertyData, index) => {
                         const iframeId = `property-card-container-${(index+1)}`;
