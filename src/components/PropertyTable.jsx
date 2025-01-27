@@ -36,9 +36,9 @@ export default function PropertyTable(props) {
                 </thead>
                 <tbody>
                     {
-                        attributeArray.map((attribute) => {
+                        attributeArray.map((attribute, index) => {
                             const key = attribute.key;
-                            return (<tr>
+                            return (<tr key={index}>
                                 <th className="text-start">{attribute.label}</th>
                                 {
                                     props.propertyData.map((property, i) => {

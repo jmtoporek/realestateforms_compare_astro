@@ -6,14 +6,10 @@ const initialPropertyCount = 2;
 
 export default function PropertyComparisonTool() {
 
+    const maxCount = 5;
+    const minCount = 2;
+
     const [propertyCount, setPropertyCount] = useState(initialPropertyCount);
-
-    // let initialPropertyArray = new Array(propertyCount);
-    // initialPropertyArray = initialPropertyArray.map((item, index) => {
-    //     return {};
-    // });
-
-    // console.log("initialPropertyArray", initialPropertyArray);
 
     const [propertyArray, setPropertyArray] = useState(new Array(initialPropertyCount).fill({}));
 
@@ -23,44 +19,55 @@ export default function PropertyComparisonTool() {
             let propertyData = data.formAttributeValues;
             const updatedData = propertyArray.map((obj, i) => {
                 if (i+1 === propertyData.index) {
-                    console.log('found property data', propertyData);
                     return propertyData;
                 } else {
                     return obj;
                 }
             });
-            console.log('updatedData', updatedData);
             setPropertyArray(updatedData);
-            console.log('get iframe height');
-
-            // var iframe = document.getElementById('yourIframeID');
-            // var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-            // var height =iframeDoc.body.scrollHeight;
         }
     };
 
+    const increment = () => {
+        const newVal = propertyCount + 1;
+        if (newVal <= maxCount) {
+            setPropertyCount(newVal);
+            updatePropertyArray(newVal);
+        }
+    }
+
+    const decrement = () => {
+        const newVal = propertyCount - 1;
+        if (newVal >= minCount) {
+            setPropertyCount(newVal);
+            updatePropertyArray(newVal);
+        }
+    }
+
     const updatePropertyCount = (event) => {
-        const propertyCount = event.target.value || 2;
-        if (propertyCount < 2 || propertyCount > 5) {
+        const newPropertyCountVal = event.target.value || 2;
+        if (newPropertyCountVal < 2 || newPropertyCountVal > 5) {
             console.warn('entering an invalid number for property count');
         } else {
-            setPropertyCount(event.target.value);
-            if (propertyCount > propertyArray.length) {
-                console.log('add new item to property array');
-                const newItems = new Array(propertyCount - propertyArray.length).fill({});
-                const updatedPropertyArray = propertyArray.concat(newItems);
-                setPropertyArray(updatedPropertyArray);
-            } else if (propertyCount < propertyArray.length) {
-                console.log('remove item from property array');
-                const updatedPropertyArray = propertyArray.filter((property, index) => {
-                    return index < (propertyArray.length - 1);
-                })
-                setPropertyArray(updatedPropertyArray);
-            } else if (propertyCount === propertyArray.length) {
-                console.log('why did this happen?')
-            } else {
-                console.warn('input changed but theres a problem with the if condition')
-            }
+            setPropertyCount(newPropertyCountVal);
+            updatePropertyArray(newPropertyCountVal);
+        }
+    }
+
+    const updatePropertyArray = (quantity) => {
+        if (quantity > propertyArray.length) {
+            const newItems = new Array(quantity - propertyArray.length).fill({});
+            const updatedPropertyArray = propertyArray.concat(newItems);
+            setPropertyArray(updatedPropertyArray);
+        } else if (quantity < propertyArray.length) {
+            const updatedPropertyArray = propertyArray.filter((property, index) => {
+                return index < quantity;
+            });
+            setPropertyArray(updatedPropertyArray);
+        } else if (quantity === propertyArray.length) {
+            console.log('why did this happen?')
+        } else {
+            console.warn('input changed but theres a problem with the if condition')
         }
     }
 
@@ -83,27 +90,37 @@ export default function PropertyComparisonTool() {
                             <strong>Quanity of properties:</strong>
                         </label>
                         <div>
-                            <input 
-                                className="form-control"
-                                name="quantity-of-properties"
-                                type="number" 
-                                value={propertyCount} 
-                                onChange={updatePropertyCount}
-                                max={5}
-                                min={2} />
+                            <div className="input-group">
+                                <button 
+                                    className="btn btn-secondary" 
+                                    onClick={decrement}
+                                    disabled={propertyCount <= minCount}>-</button>
+                                <input 
+                                    className="form-control text-end"
+                                    name="quantity-of-properties"
+                                    type="number"
+                                    value={propertyCount} 
+                                    onChange={updatePropertyCount}
+                                    max={maxCount}
+                                    min={minCount} />
+                                <button 
+                                    className="btn btn-secondary" 
+                                    onClick={increment}
+                                    disabled={propertyCount >= maxCount}>+</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="row" id="property-keenform-iframes">
+            <div id="property-keenform-iframess-container">
                 {
                     propertyArray.map((propertyData, index) => {
                         const iframeId = `property-card-container-${(index+1)}`;
                         return (
                             <div
                                 id={iframeId} 
-                                className="col" 
+                                className="property-card-container" 
                                 key={index}>
                                 <PropertyCard 
                                     propertyNumber={(index+1)}
