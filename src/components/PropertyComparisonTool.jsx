@@ -121,8 +121,8 @@ export default function PropertyComparisonTool() {
             if (localStorageData.length > propertyCount) {
                 setPropertyCount(localStorageData.length);
                 updatePropertyArray(localStorageData.length);
-                setSavedPropertyData(localStorageData);
             }
+            setSavedPropertyData(localStorageData);
         } else {
             console.log('no local data');
         }
