@@ -1,7 +1,4 @@
 export default function PropertyTable(props) {
-    // console.log('property table', props);
-
-    // toLocaleString("en-US", {style:"currency", currency:"USD"});
 
     const attributeArray = [
         {label: "Address", key: "propertyAddress"},
@@ -15,12 +12,22 @@ export default function PropertyTable(props) {
         {label: "Insurance", key: "insuranceMonthlyTotal", displayType: "currency"},
         {label: "HOA fees / assessment", key: "assessmentMonthlyTotal", displayType: "currency"},
         {label: "Others", key: "otherMonthlyTotal", displayType: "currency"},
-        
     ];
+
+    const print = () => {
+        window.print();
+    };
 
     return (<div>
         
-        <h2 className="display-6 text-center mb-4">Compare properties</h2>
+        <h2 className="display-6 text-center no-print">Compare properties</h2>
+
+        <div className="text-center mb-4 no-print">
+            <div className="btn-group">
+                <button className="btn btn-outline-primary" onClick={props.saveLocally}>Save</button>
+                <button className="btn btn-outline-primary" onClick={print}>Print</button>
+            </div>
+        </div>
 
         <div className="table-responsive">
             <table className="table text-center">
