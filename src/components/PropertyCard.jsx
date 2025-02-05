@@ -24,7 +24,6 @@ const keenformFAKeys = [
 ];
 
 export default function PropertyCard(props) {
-    console.log('props', props);
     const {propertyNumber, savedPropertyData} = props;
 
     const [reset, setReset] = useState(0);
@@ -64,9 +63,7 @@ export default function PropertyCard(props) {
 
     const collapsedIcon = expanded ? <Dash className="ml-4" /> : <Plus className="ml-4" />;
 
-    // const paramsStr = `index=${propertyNumber}&displayMode=iframe&reset=${reset}`;
     const iframeSrc = getIframeUrl;
-    // "https://keenforms.com/keenforms/b7740ab6-17e8-4929-bfbb-0f4396a35249?" + paramsStr;
     return (
         <div className="card mb-4 rounded-3 shadow-sm">
             <div className="card-header d-flex justify-content-between">
