@@ -154,7 +154,7 @@ export default function PropertyComparisonTool() {
                         <label 
                             className="col-sm-2 col-form-label"
                             htmlFor="quantity-of-properties">
-                            <strong>Quanity of properties:</strong>
+                            <strong>Quantity of properties:</strong>
                         </label>
                         <div>
                             <div className="input-group">
