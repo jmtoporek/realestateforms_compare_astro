@@ -60,7 +60,7 @@ export default function PropertyComparisonTool() {
      */
     const updatePropertyCount = (event) => {
         const newPropertyCountVal = parseInt(event.target.value);
-        if (newPropertyCountVal !== NaN && newPropertyCountVal >= minCount && newPropertyCountVal <= maxCount) {
+        if (isNaN(newPropertyCountVal) != true && newPropertyCountVal >= minCount && newPropertyCountVal <= maxCount) {
             setPropertyCount(newPropertyCountVal);
             updatePropertyArray(newPropertyCountVal);
         } else {
@@ -141,6 +141,13 @@ export default function PropertyComparisonTool() {
 
     return (
         <PropertyCountContext.Provider value={propertyCount}>
+            <div className="pricing-header mx-auto text-center">
+                <h1 className="fw-normal text-body-emphasis h2">Property Comparison Tool</h1>
+                <div>presented by Tim Brent</div>
+                <p className="fs-5 text-body-secondary">
+                    Compare expenses across up to 5 different properties
+                </p>
+            </div>
             <div>
                 <PropertyCountController 
                     increment={increment} 

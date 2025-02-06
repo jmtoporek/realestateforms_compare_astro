@@ -6,12 +6,12 @@ export default function PropertyTable(props) {
         {label: "Down payment", key: "downPaymentAmount", displayType: "currency"},
         // {label: "Mortgage (monthly)", key: "monthlyPayment", displayType: "currency"},
         {label: "Mortgage plus Taxes", key: "mortgagePlusEscrowMonthly", displayType: "currency"},
-        {label: "Total Monthly payment", key: "estimatedPayment", displayType: "currency", cellClass: 'bold'},
         {label: "PMI", key: "pMIAmount", displayType: "currency"},
         // {label: "Property Taxes", key: "monthlyTaxesTotal", displayType: "currency"},
         {label: "Insurance", key: "insuranceMonthlyTotal", displayType: "currency"},
         {label: "HOA fees / assessment", key: "assessmentMonthlyTotal", displayType: "currency"},
         {label: "Others", key: "otherMonthlyTotal", displayType: "currency"},
+        {label: "Total Monthly payment", key: "estimatedPayment", displayType: "currency", cellClass: 'bold'},
     ];
 
     const print = () => {
