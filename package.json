@@ -12,7 +12,7 @@
     "@astrojs/react": "^4.2.0",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
-    "astro": "^5.2.3",
+    "astro": "^5.3.0",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "react": "^19.0.0",

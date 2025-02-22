@@ -23,7 +23,8 @@ export default function PropertyComparisonTool() {
 
     const receiveMessageFromIframe = (event) => {
         const data = event.data;
-        if (data?.messageType === "KeenformState") {
+        // TODO: fix this with updated spec
+        if (data?.keenformMessageType === "KeenformState" || data?.messageType === "KeenformState") {
             let propertyData = data.formAttributeValues;
             const updatedData = propertyArray.map((obj, i) => {
                 if (i+1 === propertyData.index) {
@@ -33,7 +34,9 @@ export default function PropertyComparisonTool() {
                 }
             });
             setPropertyArray(updatedData);
-        }
+        }/* else {
+            console.log('message does not appear to be keenforms related', data);
+        } */
     };
 
     const increment = () => {
@@ -80,7 +83,7 @@ export default function PropertyComparisonTool() {
             });
             setPropertyArray(updatedPropertyArray);
         } else if (quantity === propertyArray.length) {
-            console.log('why did this happen?');
+            console.log('quantity did not change, why did this happen?');
         } else {
             console.warn('input changed but theres a problem with the if condition');
         }
@@ -120,6 +123,24 @@ export default function PropertyComparisonTool() {
         } else {
             console.log('no local data');
         }
+    }
+
+    const publishToPostmessageApi = () => {
+        console.log('publish even to postmessage api');
+        const messageObj = {
+            keenform_action_type: 'set_form_attribute_value',
+            keenform_action_data: {
+                form_attribute_name: "input1",
+                form_attribute_value: "set from postmessage api"
+            }
+        }
+        
+        const iframe = document.querySelector("iframe");
+        console.log(iframe);
+        /*
+        iframe.contentWindow.postMessage(message, "*");
+        window.postMessage(messageObj, "*");
+        */
     }
 
     useEffect(() => {
@@ -196,6 +217,10 @@ export default function PropertyComparisonTool() {
                             saveLocally={saveLocally}
                         />
                     </div>
+                </div>
+
+                <div>
+                    <button className="btn btn-primary" onClick={publishToPostmessageApi}>test publish to iframe</button>
                 </div>
 
                 <Toaster />
