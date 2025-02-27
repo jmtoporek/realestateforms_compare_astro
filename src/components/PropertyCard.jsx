@@ -4,7 +4,7 @@ import Collapse from 'react-bootstrap/Collapse';
 import { Plus, Dash } from 'react-bootstrap-icons';
 
 const keenformFAKeys = [
-    "propertyAddress",
+    "addressOfProperty",
     "purchasePrice",
     "downPaymentPercent",
     "interestRate",
@@ -25,7 +25,6 @@ const keenformFAKeys = [
 
 export default function PropertyCard(props) {
     const {propertyNumber, savedPropertyData} = props;
-
     const [reset, setReset] = useState(0);
     const [expanded, setExpanded] = useState(true);
 
@@ -39,31 +38,39 @@ export default function PropertyCard(props) {
     }
 
     const getIframeUrl = () => {
-        let iframeSrc = "https://keenforms.com/keenforms/b7740ab6-17e8-4929-bfbb-0f4396a35249?";
-        let paramsObj = {
-            index: propertyNumber,
-            displayMode: 'iframe',
-            reset: reset
-        };
-        if (savedPropertyData) {
-            keenformFAKeys.forEach(key => {
-                if(savedPropertyData.hasOwnProperty(key)) {
-                    paramsObj[key] = savedPropertyData[key];
-                }
-            })
-        }
+        if (props.iframeUrl) {
+            // console.log('props', props);
+            let iframeSrc = props.iframeUrl; // "https://keenforms.com/keenforms/b7740ab6-17e8-4929-bfbb-0f4396a35249?";
+            let paramsObj = {
+                index: propertyNumber,
+                displayMode: 'iframe',
+                reset: reset
+            };
+            // console.log('params obj', paramsObj);
+            if (savedPropertyData) {
+                keenformFAKeys.forEach(key => {
+                    if(savedPropertyData.hasOwnProperty(key)) {
+                        paramsObj[key] = savedPropertyData[key];
+                    }
+                })
+            }/* else {
+                console.log('missing property number')
+            }*/
 
-        let paramStr = '';
-        for (let [key, value] of Object.entries(paramsObj)) {
-            paramStr += `${key}=${value}&`;
+            let paramStr = '';
+            for (let [key, value] of Object.entries(paramsObj)) {
+                paramStr += `${key}=${value}&`;
+            }
+            const iframeUrl = iframeSrc + '?' + paramStr;
+            // console.log('iframeUrl', iframeUrl);
+            return iframeUrl;
+        } else {
+            return null;
         }
-        const iframeUrl = iframeSrc + paramStr;
-        return iframeUrl;
     }
 
     const collapsedIcon = expanded ? <Dash className="ml-4" /> : <Plus className="ml-4" />;
-
-    const iframeSrc = getIframeUrl;
+    const iframeSrc = getIframeUrl();
     return (
         <div className="card mb-4 rounded-3 shadow-sm">
             <div className="card-header d-flex justify-content-between">
@@ -80,9 +87,12 @@ export default function PropertyCard(props) {
             </div>
             <div className="card-body card-body-no-padding" style={{padding: 0}}>
                 <Collapse in={expanded}>
-                    <div>
-                        <iframe src={iframeSrc()}></iframe>
-                    </div>
+                    { !!iframeSrc ? 
+                        <div>
+                            <iframe src={getIframeUrl()}></iframe>
+                        </div>
+                        : <div>loading</div>
+                    }
                 </Collapse>
             </div>
         </div>

@@ -3,6 +3,7 @@ import PropertyCard from './PropertyCard';
 import PropertyTable from './PropertyTable';
 import PropertyCountController from './PropertyCountController';
 import toast, { Toaster } from 'react-hot-toast';
+const keenformIframeUrl = import.meta.env.PUBLIC_KEENFORMS_IFRAME_URL;
 
 const initialPropertyCount = 2;
 
@@ -11,8 +12,7 @@ const notify = (message) => toast.success(message);
 export const PropertyCountContext = createContext();
 
 export default function PropertyComparisonTool() {
-
-    const maxCount = 5;
+    const maxCount = 3; // make this the environment variable
     const minCount = 2;
     const localStorageDataKey = "propertyData";
 
@@ -23,8 +23,8 @@ export default function PropertyComparisonTool() {
 
     const receiveMessageFromIframe = (event) => {
         const data = event.data;
-        // TODO: fix this with updated spec
         if (data?.keenformMessageType === "KeenformState" || data?.messageType === "KeenformState") {
+            // console.log('update the property data array');
             let propertyData = data.formAttributeValues;
             const updatedData = propertyArray.map((obj, i) => {
                 if (i+1 === propertyData.index) {
@@ -33,10 +33,9 @@ export default function PropertyComparisonTool() {
                     return obj;
                 }
             });
+            console.log('updatedData:', updatedData);
             setPropertyArray(updatedData);
-        }/* else {
-            console.log('message does not appear to be keenforms related', data);
-        } */
+        }
     };
 
     const increment = () => {
@@ -126,7 +125,6 @@ export default function PropertyComparisonTool() {
     }
 
     const publishToPostmessageApi = () => {
-        console.log('publish even to postmessage api');
         const messageObj = {
             keenform_action_type: 'set_form_attribute_value',
             keenform_action_data: {
@@ -135,8 +133,8 @@ export default function PropertyComparisonTool() {
             }
         }
         
-        const iframe = document.querySelector("iframe");
-        console.log(iframe);
+        // TODO: this wont work because there are multiple iframes
+        // const iframe = document.querySelector("iframe");
         /*
         iframe.contentWindow.postMessage(message, "*");
         window.postMessage(messageObj, "*");
@@ -192,6 +190,7 @@ export default function PropertyComparisonTool() {
                             const iframeId = `property-card-container-${(index+1)}`;
                             let thisPropertyCardProps = {
                                 propertyNumber: (index+1),
+                                iframeUrl: keenformIframeUrl
                             };
                             if (savedPropertyData) {
                                 thisPropertyCardProps.savedPropertyData = savedPropertyData[index];

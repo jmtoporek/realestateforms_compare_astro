@@ -1,7 +1,8 @@
 export default function PropertyTable(props) {
+    console.log('property table props', props);
 
     const attributeArray = [
-        {label: "Address", key: "propertyAddress"},
+        {label: "Address", key: "addressOfProperty"},
         {label: "Price", key: "purchasePrice", displayType: "currency"},
         {label: "Down payment", key: "downPaymentAmount", displayType: "currency"},
         {label: "Mortgage (monthly)", key: "monthlyPayment", displayType: "currency"},
