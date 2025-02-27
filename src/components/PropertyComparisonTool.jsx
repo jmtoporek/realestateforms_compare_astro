@@ -219,10 +219,6 @@ export default function PropertyComparisonTool() {
                     </div>
                 </div>
 
-                <div>
-                    <button className="btn btn-primary" onClick={publishToPostmessageApi}>test publish to iframe</button>
-                </div>
-
                 <Toaster />
             </div>
         </PropertyCountContext.Provider>
