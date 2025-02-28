@@ -217,6 +217,7 @@ export default function PropertyComparisonTool() {
                         <PropertyTable 
                             propertyData={propertyArray}
                             saveLocally={saveLocally}
+                            dataType={dataType}
                         />
                     </div>
                 </div>

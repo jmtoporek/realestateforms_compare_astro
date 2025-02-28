@@ -9,7 +9,7 @@ export default function PropertyTable(props) {
     // TODO check env file for data type, use condo or multifamily
     let attributeArray = CONDO_PROPERTY_DATA;
     if (props.dataType == "multifamily") {
-        keenformFAKeys = MULTIFAMILY_PROPERTY_DATA;
+        attributeArray = MULTIFAMILY_PROPERTY_DATA;
     }
 
     const print = () => {
