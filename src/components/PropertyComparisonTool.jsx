@@ -4,6 +4,7 @@ import PropertyTable from './PropertyTable';
 import PropertyCountController from './PropertyCountController';
 import toast, { Toaster } from 'react-hot-toast';
 const keenformIframeUrl = import.meta.env.PUBLIC_KEENFORMS_IFRAME_URL;
+const dataType = import.meta.env.PUBLIC_FORM_TYPE;
 
 const initialPropertyCount = 2;
 
@@ -12,7 +13,8 @@ const notify = (message) => toast.success(message);
 export const PropertyCountContext = createContext();
 
 export default function PropertyComparisonTool() {
-    const maxCount = 3; // make this the environment variable
+    // console.log("dataType:", dataType);
+    const maxCount = 3; // TODO: make this the environment variable
     const minCount = 2;
     const localStorageDataKey = "propertyData";
 
@@ -190,7 +192,8 @@ export default function PropertyComparisonTool() {
                             const iframeId = `property-card-container-${(index+1)}`;
                             let thisPropertyCardProps = {
                                 propertyNumber: (index+1),
-                                iframeUrl: keenformIframeUrl
+                                iframeUrl: keenformIframeUrl,
+                                dataType: dataType
                             };
                             if (savedPropertyData) {
                                 thisPropertyCardProps.savedPropertyData = savedPropertyData[index];

@@ -2,31 +2,22 @@
 import React, { useState } from 'react';
 import Collapse from 'react-bootstrap/Collapse';
 import { Plus, Dash } from 'react-bootstrap-icons';
-
-const keenformFAKeys = [
-    "addressOfProperty",
-    "purchasePrice",
-    "downPaymentPercent",
-    "interestRate",
-    "numberOfYears",
-    "taxes",
-    "taxes1Frequency",
-    "taxes2",
-    "taxes2Frequency",
-    "insurance",
-    "insuranceFrequency",
-    "associationFees1",
-    "associationFee1Frequency",
-    "associationFees2",
-    "associationFee2Frequency",
-    "otherFees",
-    "otherFeesFrequency"
-];
+import {
+    CONDO_PROPERTY_DATA,
+    CONDO_LOCALSTORAGE_KEYS,
+    MULTIFAMILY_PROPERTY_DATA,
+    MULTIFAMILY_LOCALSTORAGE_KEYS
+} from "../constants/table_data";
 
 export default function PropertyCard(props) {
     const {propertyNumber, savedPropertyData} = props;
     const [reset, setReset] = useState(0);
     const [expanded, setExpanded] = useState(true);
+
+    let keenformFAKeys = CONDO_LOCALSTORAGE_KEYS;
+    if (props.dataType == "multifamily") {
+        keenformFAKeys = MULTIFAMILY_LOCALSTORAGE_KEYS;
+    }
 
     const clearForm = () => {
         setReset(reset+1);

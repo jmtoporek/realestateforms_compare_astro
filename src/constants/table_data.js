@@ -1,9 +1,18 @@
-const CONDO_PROPERTY_DATA = [
-    
-]
+export const CONDO_PROPERTY_DATA = [
+    {label: "Address", key: "propertyAddress"},
+    {label: "Price", key: "purchasePrice", displayType: "currency"},
+    {label: "Down payment", key: "downPaymentAmount", displayType: "currency"},
+    {label: "Mortgage (monthly)", key: "monthlyPayment", displayType: "currency"},
+    {label: "Property Taxes", key: "monthlyTaxesTotal", displayType: "currency"},
+    {label: "PMI", key: "pMIAmount", displayType: "currency"},
+    {label: "HOA fees / assessment", key: "assessmentMonthlyTotal", displayType: "currency"},
+    {label: "Insurance", key: "insuranceMonthlyTotal", displayType: "currency"},
+    {label: "Others", key: "otherMonthlyTotal", displayType: "currency"},
+    {label: "Total Monthly payment", key: "estimatedPayment", displayType: "currency", cellClass: 'bold'},
+];
 
-const CONDO_LOCALSTORAGE_KEYS = [
-    // fix this key
+export const CONDO_LOCALSTORAGE_KEYS = [
+    "propertyAddress",
     "purchasePrice",
     "downPaymentPercent",
     "interestRate",
@@ -22,17 +31,28 @@ const CONDO_LOCALSTORAGE_KEYS = [
     "otherFeesFrequency"
 ];
 
-const MULTIFAMILY_PROPERTY_DATA = [
+export const MULTIFAMILY_PROPERTY_DATA = [
+    {label: "MLS ID Number", key: "mLSIDNumber"},
     {label: "Address", key: "addressOfProperty"},
-    {label: "Price", key: "purchasePrice", displayType: "currency"},
-    {label: "Down payment", key: "downPaymentAmount", displayType: "currency"},
-    {label: "Mortgage (monthly)", key: "monthlyPayment", displayType: "currency"},
-    {label: "Property Taxes", key: "monthlyTaxesTotal", displayType: "currency"},
-    {label: "PMI", key: "pMIAmount", displayType: "currency"},
-    {label: "HOA fees / assessment", key: "assessmentMonthlyTotal", displayType: "currency"},
-    {label: "Insurance", key: "insuranceMonthlyTotal", displayType: "currency"},
-    {label: "Others", key: "otherMonthlyTotal", displayType: "currency"},
-    {label: "Total Monthly payment", key: "estimatedPayment", displayType: "currency", cellClass: 'bold'},
+    {label: "Cap Rate", key: "capRate"},
+    {label: "Net Operating Income", key: "netOperatingIncome", displayType: "currency"},
+    {label: "Purchase Price", key: "purchasePrice", displayType: "currency"},
+    {label: "Annual Debt Service", key: "annualDebtService", displayType: "currency"},
+    {label: "Real Estate Taxes (Yearly)", key: "realEstateTaxesYearly", displayType: "currency"},
+    {label: "annualGrossIncome", key: "annualGrossIncome", displayType: "currency"},
+    {label: "annualFixedExpenses", key: "annualFixedExpenses", displayType: "currency"},
+    {label: "desiredCapRates", key: "desiredCapRate"}
 ];
 
-const MULTIFAMILY_LOCALSTORAGE_KEYS = [];
+export const MULTIFAMILY_LOCALSTORAGE_KEYS = [
+    "mLSIDNumber",
+    "addressOfProperty",
+    "capRate",
+    "netOperatingIncome",
+    "purchasePrice",
+    "annualDebtService",
+    "realEstateTaxesYearly",
+    "annualGrossIncome",
+    "annualFixedExpenses",
+    "desiredCapRate"
+];

@@ -1,19 +1,16 @@
+import {
+    CONDO_PROPERTY_DATA,
+    MULTIFAMILY_PROPERTY_DATA
+} from '../constants/table_data';
+
 export default function PropertyTable(props) {
     console.log('property table props', props);
 
-    const attributeArray = [
-        {label: "Address", key: "addressOfProperty"},
-        {label: "Price", key: "purchasePrice", displayType: "currency"},
-        {label: "Down payment", key: "downPaymentAmount", displayType: "currency"},
-        {label: "Mortgage (monthly)", key: "monthlyPayment", displayType: "currency"},
-        {label: "Property Taxes", key: "monthlyTaxesTotal", displayType: "currency"},
-        {label: "PMI", key: "pMIAmount", displayType: "currency"},
-        // {label: "Mortgage plus Taxes", key: "mortgagePlusEscrowMonthly", displayType: "currency"},
-        {label: "HOA fees / assessment", key: "assessmentMonthlyTotal", displayType: "currency"},
-        {label: "Insurance", key: "insuranceMonthlyTotal", displayType: "currency"},
-        {label: "Others", key: "otherMonthlyTotal", displayType: "currency"},
-        {label: "Total Monthly payment", key: "estimatedPayment", displayType: "currency", cellClass: 'bold'},
-    ];
+    // TODO check env file for data type, use condo or multifamily
+    let attributeArray = CONDO_PROPERTY_DATA;
+    if (props.dataType == "multifamily") {
+        keenformFAKeys = MULTIFAMILY_PROPERTY_DATA;
+    }
 
     const print = () => {
         window.print();
