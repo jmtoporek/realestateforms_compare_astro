@@ -5,6 +5,8 @@ import PropertyCountController from './PropertyCountController';
 import toast, { Toaster } from 'react-hot-toast';
 const keenformIframeUrl = import.meta.env.PUBLIC_KEENFORMS_IFRAME_URL;
 const dataType = import.meta.env.PUBLIC_FORM_TYPE;
+const maxQuantity = import.meta.env.PUBLIC_MAX_PROPERTY_QTY;
+const pageTitle = import.meta.env.PUBLIC_PAGE_TITLE;
 
 const initialPropertyCount = 2;
 
@@ -13,8 +15,7 @@ const notify = (message) => toast.success(message);
 export const PropertyCountContext = createContext();
 
 export default function PropertyComparisonTool() {
-    // console.log("dataType:", dataType);
-    const maxCount = 3; // TODO: make this the environment variable
+    const maxCount = maxQuantity;
     const minCount = 2;
     const localStorageDataKey = "propertyData";
 
@@ -26,7 +27,6 @@ export default function PropertyComparisonTool() {
     const receiveMessageFromIframe = (event) => {
         const data = event.data;
         if (data?.keenformMessageType === "KeenformState" || data?.messageType === "KeenformState") {
-            // console.log('update the property data array');
             let propertyData = data.formAttributeValues;
             const updatedData = propertyArray.map((obj, i) => {
                 if (i+1 === propertyData.index) {
@@ -35,7 +35,6 @@ export default function PropertyComparisonTool() {
                     return obj;
                 }
             });
-            console.log('updatedData:', updatedData);
             setPropertyArray(updatedData);
         }
     };
@@ -163,10 +162,10 @@ export default function PropertyComparisonTool() {
     return (
         <PropertyCountContext.Provider value={propertyCount}>
             <div className="pricing-header mx-auto text-center">
-                <h1 className="fw-normal text-body-emphasis h2">Property Comparison Tool</h1>
+                <h1 className="fw-normal text-body-emphasis h2">{pageTitle}</h1>
                 <div>presented by Tim Brent</div>
                 <p className="fs-5 text-body-secondary">
-                    Compare expenses across up to 5 different properties
+                    Compare expenses across up to {maxCount} different properties
                 </p>
             </div>
             <div>

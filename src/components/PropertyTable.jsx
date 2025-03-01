@@ -4,8 +4,6 @@ import {
 } from '../constants/table_data';
 
 export default function PropertyTable(props) {
-    console.log('property table props', props);
-
     // TODO check env file for data type, use condo or multifamily
     let attributeArray = CONDO_PROPERTY_DATA;
     if (props.dataType == "multifamily") {
@@ -50,8 +48,19 @@ export default function PropertyTable(props) {
                                         const attributeValue = property[key] || "-";
                                         let displayValue = attributeValue;
                                         const cellClass = attribute?.cellClass || "std-cell";
-                                        if (attribute.displayType && attribute.displayType === "currency" ) {
-                                            displayValue = attributeValue.toLocaleString("en-US", {style:"currency", currency:"USD"});
+                                        if (attribute.displayType) {
+                                            switch(attribute.displayType) {
+                                                case "currency":
+                                                    displayValue = attributeValue.toLocaleString("en-US", {style:"currency", currency:"USD"});
+                                                    break;
+                                                case "percent":
+                                                    if (attributeValue != "-") {
+                                                        displayValue = `${attributeValue}%`;
+                                                    }
+                                                    break;
+                                                default:
+                                                    // do nothing?
+                                            }
                                         }
                                         return <td className={cellClass} key={i}>{displayValue}</td>
                                     })

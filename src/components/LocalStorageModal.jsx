@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
+// DELETABLE, not in use
 function LocalStorageModal(props) {
   // console.log("modal props", props);
   const [show, setShow] = useState(false);

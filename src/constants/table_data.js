@@ -34,14 +34,14 @@ export const CONDO_LOCALSTORAGE_KEYS = [
 export const MULTIFAMILY_PROPERTY_DATA = [
     {label: "MLS ID Number", key: "mLSIDNumber"},
     {label: "Address", key: "addressOfProperty"},
-    {label: "Cap Rate", key: "capRate"},
+    {label: "Cap Rate", key: "capRate", displayType: "percent"},
     {label: "Net Operating Income", key: "netOperatingIncome", displayType: "currency"},
     {label: "Purchase Price", key: "purchasePrice", displayType: "currency"},
     {label: "Annual Debt Service", key: "annualDebtService", displayType: "currency"},
     {label: "Real Estate Taxes (Yearly)", key: "realEstateTaxesYearly", displayType: "currency"},
     {label: "Annual Gross Income", key: "annualGrossIncome", displayType: "currency"},
     {label: "Annual Fixed Expenses", key: "annualFixedExpenses", displayType: "currency"},
-    {label: "Desired Cap Rate", key: "desiredCapRate"}
+    {label: "Desired Cap Rate", key: "desiredCapRate", displayType: "percent"}
 ];
 
 export const MULTIFAMILY_LOCALSTORAGE_KEYS = [

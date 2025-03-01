@@ -3,9 +3,7 @@ import React, { useState } from 'react';
 import Collapse from 'react-bootstrap/Collapse';
 import { Plus, Dash } from 'react-bootstrap-icons';
 import {
-    CONDO_PROPERTY_DATA,
     CONDO_LOCALSTORAGE_KEYS,
-    MULTIFAMILY_PROPERTY_DATA,
     MULTIFAMILY_LOCALSTORAGE_KEYS
 } from "../constants/table_data";
 
@@ -30,8 +28,7 @@ export default function PropertyCard(props) {
 
     const getIframeUrl = () => {
         if (props.iframeUrl) {
-            // console.log('props', props);
-            let iframeSrc = props.iframeUrl; // "https://keenforms.com/keenforms/b7740ab6-17e8-4929-bfbb-0f4396a35249?";
+            let iframeSrc = props.iframeUrl;
             let paramsObj = {
                 index: propertyNumber,
                 displayMode: 'iframe',
