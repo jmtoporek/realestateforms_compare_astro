@@ -34,17 +34,35 @@ export const CONDO_LOCALSTORAGE_KEYS = [
 export const MULTIFAMILY_PROPERTY_DATA = [
     {label: "MLS ID Number", key: "mLSIDNumber"},
     {label: "Address", key: "addressOfProperty"},
-    {label: "Net Operating Income", key: "netOperatingIncome", displayType: "currency"},
+    // {label: "Mortgage Info", key: "tbd", displayType: "divider", rowType: "divider"},
+    {label: "Net Operating Income", key: "netOperatingIncome", displayType: "currency", cellType: "th"},
     {label: "Cap Rate", key: "capRate", displayType: "percent"},
     {label: "Gross Rent Multiplier", key: "grossRentMultiplier", displayType: "percent"},
     {label: "Cash on Cash Return", key: "cashOnCashReturn", displayType: "percent"},
-    {label: "Purchase Price", key: "purchasePrice", displayType: "currency"},
-    {label: "Annual Debt Service", key: "annualDebtService", displayType: "currency"},
     {label: "Total Cash Invested", key: "totalCashInvested", displayType: "currency"},
-    {label: "Real Estate Taxes (Yearly)", key: "realEstateTaxesYearly", displayType: "currency"},
+    {label: "Desired Cap Rate purchase price", key: "desiredCapRatePurchasePrice", displayType: "currency"},
+    {label: "Purchase Price", key: "purchasePrice", displayType: "currency"},
+    // ADD DIVIDER
+    {label: "Debt Service and RE Taxes", key: "tbd", displayType: "divider", rowType: "divider"},
+    {label: "Annual Real Estate Taxes", key: "realEstateTaxesYearly", displayType: "currency"},
+    {label: "Monthly Debt Service + RE Taxes", key: "monthlyDebtServicePlusRETaxes", displayType: "currency"},
+    {label: "Annual Debt Service + RE Taxes", key: "annualDebtServicePlusRETaxes", displayType: "currency"},
+    // ADD DIVIDER
+    {label: "Income", key: "tbd", displayType: "divider", rowType: "divider"},
+    {label: "Monthly Gross Income", key: "monthlyGrossIncome", displayType: "currency"},
     {label: "Annual Gross Income", key: "annualGrossIncome", displayType: "currency"},
-    {label: "Annual Fixed Expenses", key: "annualFixedExpenses", displayType: "currency"},
-    {label: "Desired Cap Rate Purchase price", key: "desiredCapRatePurchasePrice", displayType: "currency"}
+    // ADD DIVIDER
+    {label: "Expenses", key: "tbd", displayType: "divider", rowType: "divider"},
+    {label: "Monthly Property Expenses", key: "monthlyExpensesTotal", displayType: "currency", cellType: "td"},
+    {label: "Annual Property Expenses", key: "annualExpensesTotal", displayType: "currency", cellType: "td"},
+    // ADD DIVIDER
+    {label: "Summary", key: "tbd", displayType: "divider", rowType: "divider"},
+    {label: "Monthly Cash Flow", key: "monthlyCashFlow", displayType: "currency", cellType: "td"},
+    {label: "Annual Cash Flow", key: "yearlyCashFlow", displayType: "currency", cellType: "td"},
+    //yearlyCashFlow
+
+    // add property income minus debt service minus expenses = monthly cash flow
+
 ];
 
 export const MULTIFAMILY_LOCALSTORAGE_KEYS = [

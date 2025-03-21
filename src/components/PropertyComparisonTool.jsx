@@ -7,6 +7,7 @@ const keenformIframeUrl = import.meta.env.PUBLIC_KEENFORMS_IFRAME_URL;
 const dataType = import.meta.env.PUBLIC_FORM_TYPE;
 const maxQuantity = import.meta.env.PUBLIC_MAX_PROPERTY_QTY;
 const pageTitle = import.meta.env.PUBLIC_PAGE_TITLE;
+const pageSubtitle = import.meta.env.PUBLIC_COMPARISON_SUBTITLE
 
 const initialPropertyCount = 2;
 
@@ -142,6 +143,12 @@ export default function PropertyComparisonTool() {
         */
     }
 
+    const getPageSubtitle = () => {
+        console.log('pageSubtitle:', pageSubtitle);
+        let interpolatedSubtitle = pageSubtitle.replace("{PUBLIC_MAX_PROPERTY_QTY}", maxQuantity);
+        return interpolatedSubtitle;
+    }
+
     useEffect(() => {
         window.addEventListener('message', receiveMessageFromIframe, false);
         
@@ -162,13 +169,14 @@ export default function PropertyComparisonTool() {
     return (
         <PropertyCountContext.Provider value={propertyCount}>
             <div className="pricing-header mx-auto text-center">
-                <h1 className="fw-normal text-body-emphasis h2">{pageTitle}</h1>
+                <h1 className="fw-normal text-body-emphasis h4">{pageTitle}</h1>
                 <div>presented by Tim Brent</div>
-                <p className="fs-5 text-body-secondary">
-                    Compare expenses across up to {maxCount} different properties
-                </p>
+                <div>ph: 773-491-0792 - email: tim@homes-condos.com</div>
+                <div className="fs-5 text-body-secondary no-print">
+                    {getPageSubtitle()}
+                </div>
             </div>
-            <div>
+            <div className="mt-2">
                 <PropertyCountController 
                     increment={increment} 
                     decrement={decrement}
