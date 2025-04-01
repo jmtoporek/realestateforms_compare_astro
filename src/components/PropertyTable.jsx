@@ -44,7 +44,9 @@ export default function PropertyTable(props) {
                             if (attribute.rowType === "divider") {
                                 // get quantity of columns, set colspan to that value
                                 const colspanVal = props.propertyData.length + 1;
-                                return <tr className="divider-row"><th colspan={colspanVal}>{attribute.label}</th></tr>;
+                                return <tr key={index} className="divider-row">
+                                    <th colSpan={colspanVal}>{attribute.label}</th>
+                                </tr>;
                             } else {
                             // move this to function to get property ROW data
                             // use separate 
@@ -81,7 +83,7 @@ export default function PropertyTable(props) {
                                                         // do nothing?
                                                 }
                                             }
-                                            console.log('cell type', attribute.cellType);
+                                            // console.log('cell type', attribute.cellType);
                                             if (attribute.cellType && attribute.cellType == "th"){
                                                 return <th className={cellClassArray.join(" ")} key={i}>{displayValue}</th>
                                             } else {

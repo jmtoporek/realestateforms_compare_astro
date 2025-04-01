@@ -1,12 +1,13 @@
 ---
 import BootstrapTemplate from '../layouts/BootstrapTemplate.astro';
+import DataDefintionContent from '../components/DataDefinitionContent';
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <BootstrapTemplate >
 	<div class="max-page-width">
-		<h1 class="text-center">About the Multifamily Worksheet</h1>
-		<div>About page content here</div>
+		<h1 class="text-center">Data Definitions for the Multifamily Worksheet</h1>
+		<DataDefintionContent client:only="react" />
 	</div>
 </BootstrapTemplate >
