@@ -126,26 +126,12 @@ export default function PropertyComparisonTool() {
         }
     }
 
-    const publishToPostmessageApi = () => {
-        const messageObj = {
-            keenform_action_type: 'set_form_attribute_value',
-            keenform_action_data: {
-                form_attribute_name: "input1",
-                form_attribute_value: "set from postmessage api"
-            }
-        }
-        
-        // TODO: this wont work because there are multiple iframes
-        // const iframe = document.querySelector("iframe");
-        /*
-        iframe.contentWindow.postMessage(message, "*");
-        window.postMessage(messageObj, "*");
-        */
-    }
-
     const getPageSubtitle = () => {
         console.log('pageSubtitle:', pageSubtitle);
-        let interpolatedSubtitle = pageSubtitle.replace("{PUBLIC_MAX_PROPERTY_QTY}", maxQuantity);
+        if (!pageSubtitle || pageSubtitle.length === 0 || maxQuantity === undefined) {
+            return "";
+        }
+        const interpolatedSubtitle = pageSubtitle.replace("{PUBLIC_MAX_PROPERTY_QTY}", maxQuantity);
         return interpolatedSubtitle;
     }
 
@@ -193,7 +179,8 @@ export default function PropertyComparisonTool() {
                         }
                 </PropertyCountController>
 
-                <div id="property-keenform-iframes-container" className="no-print">
+
+                <div id="property-keenform-iframes-container" className="no-print pagebreak">
                     {
                         propertyArray.map((propertyData, index) => {
                             const iframeId = `property-card-container-${(index+1)}`;

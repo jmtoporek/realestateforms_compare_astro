@@ -188,6 +188,24 @@ const pageTitle = import.meta.env.PUBLIC_PAGE_TITLE;
         margin: auto;
       }
 
+      .print-only {
+        display: none;
+      }
+
+      @media print {
+        .pagebreak {
+          page-break-after: always;
+        }
+
+        .no-print {
+          display: none; /* Hidden when printing */
+        }
+
+        .print-only {
+          display: block; /* Shown when printing */
+        }
+      }
+    
     </style>
     <!-- Custom styles for this template -->
   </head>
