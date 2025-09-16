@@ -1,4 +1,5 @@
 export const CONDO_PROPERTY_DATA = [
+    {label: "Property Data", key: "tbd", displayType: "divider", rowType: "divider"},
     {label: "Address", key: "propertyAddress"},
     {label: "Price", key: "purchasePrice", displayType: "currency"},
     {label: "Down payment", key: "downPaymentAmount", displayType: "currency"},
@@ -60,8 +61,33 @@ export const MULTIFAMILY_PROPERTY_DATA = [
     {label: "Monthly Cash Flow", key: "monthlyCashFlow", displayType: "currency", cellType: "td"},
     {label: "Annual Cash Flow", key: "yearlyCashFlow", displayType: "currency", cellType: "td"},
     //yearlyCashFlow
-
+    {label: "Page Break", key: "tbd", displayType: "divider", rowType: "divider"},
+    {label: "Monthly Gross Income", key: "tbd", displayType: "divider", rowType: "divider"},
+    {label: "Rent Unit 1", key: "rentUnit1", displayType: "currency"},
+    {label: "Rent Unit 2", key: "rentUnit2", displayType: "currency"},
+    {label: "Rent Unit 3", key: "rentUnit3", displayType: "currency"},
+    {label: "Rent Unit 4", key: "rentUnit4", displayType: "currency"},
+    {label: "Rent Unit 5", key: "rentUnit5", displayType: "currency"},
+    {label: "Rent Unit 6", key: "rentUnit6", displayType: "currency"},
+    {label: "Rent Unit 7", key: "rentUnit7", displayType: "currency"},
+    {label: "Rent Unit 8", key: "rentUnit8", displayType: "currency"},
+    {label: "Rent Unit 9", key: "rentUnit9", displayType: "currency"},
+    {label: "Rent Unit 10", key: "rentUnit10", displayType: "currency"},
+    {label: "Rent Unit 11", key: "rentUnit11", displayType: "currency"},
+    {label: "Rent Unit 12", key: "rentUnit12", displayType: "currency"},
+    {label: "Rent Parking", key: "rentParking", displayType: "currency"},
+    {label: "Other Miscellaneous Income 1", key: "otherMiscellaneous1", displayType: "currency"},
     // add property income minus debt service minus expenses = monthly cash flow
+    {label: "Expenses Monthly", key: "tbd", displayType: "divider", rowType: "divider", cellType: "td"},
+    {label: "Real Estate Taxes (monthly)", key: "realEstateTaxesMonthly", displayType: "currency"},
+    {label: "Electric", key: "electricMonthlyExpense", displayType: "currency"},
+    {label: "Gas", key: "gas", displayType: "currency"},
+    {label: "Water", key: "water", displayType: "currency"},
+    {label: "Scavenger", key: "scavengerPaymentAmount", displayType: "currency"},
+    {label: "Other", key: "otherMiscYearlyExpense1", displayType: "currency"},
+    {label: "Insurance", key: "insurancePaymentAmount", displayType: "currency"},
+    {label: "Maintenance", key: "maintenancePaymentAmount", displayType: "currency"},
+   
 
 ];
 

@@ -7,7 +7,7 @@ const keenformIframeUrl = import.meta.env.PUBLIC_KEENFORMS_IFRAME_URL;
 const dataType = import.meta.env.PUBLIC_FORM_TYPE;
 const maxQuantity = import.meta.env.PUBLIC_MAX_PROPERTY_QTY;
 const pageTitle = import.meta.env.PUBLIC_PAGE_TITLE;
-const pageSubtitle = import.meta.env.PUBLIC_COMPARISON_SUBTITLE
+const headerTagline = import.meta.env.PUBLIC_HEADER_TAGLINE;
 
 const initialPropertyCount = 2;
 
@@ -126,12 +126,11 @@ export default function PropertyComparisonTool() {
         }
     }
 
-    const getPageSubtitle = () => {
-        console.log('pageSubtitle:', pageSubtitle);
-        if (!pageSubtitle || pageSubtitle.length === 0 || maxQuantity === undefined) {
+    const getHeaderTagline = () => {
+        if (!headerTagline || headerTagline.length === 0 || maxQuantity === undefined) {
             return "";
         }
-        const interpolatedSubtitle = pageSubtitle.replace("{PUBLIC_MAX_PROPERTY_QTY}", maxQuantity);
+        const interpolatedSubtitle = headerTagline.replace("{PUBLIC_MAX_PROPERTY_QTY}", maxQuantity);
         return interpolatedSubtitle;
     }
 
@@ -159,7 +158,7 @@ export default function PropertyComparisonTool() {
                 <div>presented by Tim Brent</div>
                 <div>ph: 773-491-0792 - email: tim@homes-condos.com</div>
                 <div className="fs-5 text-body-secondary no-print">
-                    {getPageSubtitle()}
+                    {getHeaderTagline()}
                 </div>
             </div>
             <div className="mt-2">
@@ -178,7 +177,6 @@ export default function PropertyComparisonTool() {
                             </div>
                         }
                 </PropertyCountController>
-
 
                 <div id="property-keenform-iframes-container" className="no-print pagebreak">
                     {
