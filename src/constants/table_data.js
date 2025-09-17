@@ -60,8 +60,8 @@ export const MULTIFAMILY_PROPERTY_DATA = [
     {label: "Summary", key: "tbd", displayType: "divider", rowType: "divider"},
     {label: "Monthly Cash Flow", key: "monthlyCashFlow", displayType: "currency", cellType: "td"},
     {label: "Annual Cash Flow", key: "yearlyCashFlow", displayType: "currency", cellType: "td"},
-    //yearlyCashFlow
-    {label: "Page Break", key: "tbd", displayType: "divider", rowType: "divider"},
+    // Monthly Gross Income
+    {rowType:"pagebreak"},
     {label: "Monthly Gross Income", key: "tbd", displayType: "divider", rowType: "divider"},
     {label: "Rent Unit 1", key: "rentUnit1", displayType: "currency"},
     {label: "Rent Unit 2", key: "rentUnit2", displayType: "currency"},
@@ -77,18 +77,16 @@ export const MULTIFAMILY_PROPERTY_DATA = [
     {label: "Rent Unit 12", key: "rentUnit12", displayType: "currency"},
     {label: "Rent Parking", key: "rentParking", displayType: "currency"},
     {label: "Other Miscellaneous Income 1", key: "otherMiscellaneous1", displayType: "currency"},
-    // add property income minus debt service minus expenses = monthly cash flow
-    {label: "Expenses Monthly", key: "tbd", displayType: "divider", rowType: "divider", cellType: "td"},
+    // Monthly Expenses
+    {label: "Monthly Expenses", key: "tbd", displayType: "divider", rowType: "divider", cellType: "td"},
     {label: "Real Estate Taxes (monthly)", key: "realEstateTaxesMonthly", displayType: "currency"},
     {label: "Electric", key: "electricMonthlyExpense", displayType: "currency"},
-    {label: "Gas", key: "gas", displayType: "currency"},
-    {label: "Water", key: "water", displayType: "currency"},
-    {label: "Scavenger", key: "scavengerPaymentAmount", displayType: "currency"},
-    {label: "Other", key: "otherMiscYearlyExpense1", displayType: "currency"},
-    {label: "Insurance", key: "insurancePaymentAmount", displayType: "currency"},
-    {label: "Maintenance", key: "maintenancePaymentAmount", displayType: "currency"},
-   
-
+    {label: "Gas", key: "gasMonthlyExpenses", displayType: "currency"},
+    {label: "Water", key: "waterMonthlyExpenses", displayType: "currency"},
+    {label: "Scavenger", key: "scavengerMonthlyExpense", displayType: "currency"},
+    {label: "Other/Misc", key: "otherMonthlyExpense", displayType: "currency"},
+    {label: "Insurance", key: "insuranceMonthlyExpense", displayType: "currency"},
+    {label: "Maintenance", key: "maintenanceMonthlyExpense", displayType: "currency"},
 ];
 
 export const MULTIFAMILY_LOCALSTORAGE_KEYS = [

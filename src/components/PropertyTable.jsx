@@ -47,6 +47,8 @@ export default function PropertyTable(props) {
                                 return <tr key={index} className="divider-row">
                                     <th colSpan={colspanVal}>{attribute.label}</th>
                                 </tr>;
+                            } else if (attribute.rowType === "pagebreak") {
+                                return <tr key={index} className="pagebreak"></tr>;
                             } else {
                             // move this to function to get property ROW data
                             // use separate 
