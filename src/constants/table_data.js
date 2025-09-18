@@ -18,7 +18,12 @@ export const CONDO_PROPERTY_DATA = [
     key: "monthlyTaxesTotal",
     displayType: "currency",
   },
-  { label: "PMI", key: "pMIAmount", displayType: "currency" },
+  {
+    label: "PMI",
+    key: "pMIAmount",
+    displayType: "currency",
+    hideIfBlank: true,
+  },
   {
     label: "HOA fees / assessment",
     key: "assessmentMonthlyTotal",
