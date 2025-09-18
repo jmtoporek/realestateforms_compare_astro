@@ -124,7 +124,7 @@ export default function PropertyTable(props) {
                 );
 
                 if (rowData === undefined) {
-                  return <></>;
+                  return undefined;
                 }
 
                 return (
