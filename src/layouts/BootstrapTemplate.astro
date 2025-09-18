@@ -162,10 +162,11 @@ const showHeader = import.meta.env.PUBLIC_SHOW_NAV_SECTION === 'true';
       /* tbody > tr > th, thead > tr > th.first-header-cell {
         border-right: solid 1px #333;
       }
+      */
 
       .currency-font {
-        font-family: 'Courier New', Courier, monospace ,Calibri, 'Trebuchet MS', sans-serif;
-        font-weight: 600;
+        font-family: 'Open Sans', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: 400;
         font-size: 1.1em;
       }
 
@@ -216,23 +217,39 @@ const showHeader = import.meta.env.PUBLIC_SHOW_NAV_SECTION === 'true';
   <body>
 
     { showHeader && (
-    <header class="p-3 text-bg-dark">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-          </a>
-  
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
-            <li><a href="/about" class="nav-link px-2 text-white">About</a></li>
-            <li><a href="/faqs" class="nav-link px-2 text-white">FAQs</a></li>
-            <li><a href="/data_definitions" class="nav-link px-2 text-white">Data Definitions</a></li>
-          </ul>
-  
-      </div>
-    </header>
-    )}
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Property Compare</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarsExample04"
+            aria-controls="navbarsExample04"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">  
+                <a href="/" class="nav-link px-2 text-white">Home</a></li>
+              </li>
+              <li class="nav-item">
+                <a href="/about" class="nav-link px-2 text-white">About</a></li>
+              <li class="nav-item">
+                <a href="/faqs" class="nav-link px-2 text-white">FAQs</a></li>
+              <li class="nav-item">
+                <a href="/data_definitions" class="nav-link px-2 text-white">Data Definitions</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>)
+    }
+
+
 
     <div class="container-fluid py-3">
 
